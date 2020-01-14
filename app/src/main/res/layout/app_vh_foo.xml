@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout>
+    <data>
+        <variable name="vo" type="com.example.viewpager2demo.nested.FooVO2" />
+
+        <variable name="itemInteract" type="com.example.viewpager2demo.nested.FooItemInteract" />
+
+        <variable name="vh" type="com.example.viewpager2demo.base.adapter.vh2.DataBindingViewHolder" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 使用transfer埋点
+        <View
+                bpContext="@{bp}"
+                onSingleClick="@{(view)->itemInteract.foo(vo)}"
+                trackIdT="@{@id/foo}"/>
+        -->
+
+        <!-- 使用实际埋点
+        <View
+             bpContext="@{bp}"
+             onSingleClick="@{(view)->itemInteract.foo(vo)}"
+             trackIdN="@{@string/bar}"/>
+        -->
+
+        <!-- android:onClick="@{(view)->itemInteract.foo(vh.getAdapterPosition(),vo)}"-->
+        <TextView android:layout_width="match_parent" android:layout_height="100dp"
+            android:text="Foo" />
+    </FrameLayout>
+</layout>

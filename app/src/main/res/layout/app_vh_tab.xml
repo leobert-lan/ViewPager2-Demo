@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vo"
+            type="com.example.viewpager2demo.nested.TabVO2" />
+
+        <variable
+            name="itemInteract"
+            type="com.example.viewpager2demo.nested.TabItemInteract" />
+
+        <variable
+            name="vh"
+            type="com.example.viewpager2demo.base.adapter.vh2.DataBindingViewHolder" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<!--        android:descendantFocusability="blocksDescendants"-->
+
+        <!-- 使用transfer埋点
+        <View
+                bpContext="@{bp}"
+                onSingleClick="@{(view)->itemInteract.foo(vo)}"
+                trackIdT="@{@id/foo}"/>
+        -->
+
+        <!-- 使用实际埋点
+        <View
+             bpContext="@{bp}"
+             onSingleClick="@{(view)->itemInteract.foo(vo)}"
+             trackIdN="@{@string/bar}"/>
+        -->
+
+        <!-- android:onClick="@{(view)->itemInteract.foo(vh.getAdapterPosition(),vo)}"-->
+        <!--        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+        <!--            android:text="Tab" />-->
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tab_layout" />
+
+    </RelativeLayout>
+</layout>

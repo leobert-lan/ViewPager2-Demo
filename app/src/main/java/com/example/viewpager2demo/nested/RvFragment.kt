@@ -59,7 +59,7 @@ class RvFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(rv.context)
         rv.adapter = adapter
 
-        rv.isNestedScrollingEnabled = false
+        rv.isNestedScrollingEnabled = true
 
         dataset.registerDVRelation(FooVO2.Impl::class.java, FooVHCreator(null))
         dataset.registerDVRelation(BarVO2.Impl::class.java, BarVHCreator(null))

@@ -7,12 +7,6 @@
     tools:context=".NestedTestActivity2">
 
 
-    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_marginTop="54dp"-->
-    <!--        android:orientation="vertical">-->
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
@@ -20,11 +14,17 @@
         android:gravity="center_horizontal"
         app:elevation="0dp">
 
+        <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_scrollFlags="scroll|enterAlways">-->
+        <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:layout_scrollFlags="scroll">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
@@ -32,21 +32,29 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tablayout"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--            app:layout_collapseMode="pin" -->
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

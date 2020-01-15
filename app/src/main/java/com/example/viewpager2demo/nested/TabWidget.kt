@@ -85,10 +85,10 @@ class TabVHCreator(private val itemInteract: TabItemInteract?) : ViewHolderCreat
                     })
                 }
 
-                binding.viewpager2.isNestedScrollingEnabled = false
+                binding.viewpager2.isNestedScrollingEnabled = true
 
                 binding.viewpager2.getChildAt(0)?.takeIfInstance<RecyclerView>()?.let {
-                    it.isNestedScrollingEnabled = false
+                    it.isNestedScrollingEnabled = true
                 }
 
             }

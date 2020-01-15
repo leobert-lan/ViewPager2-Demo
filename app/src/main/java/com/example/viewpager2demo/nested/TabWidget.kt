@@ -108,7 +108,7 @@ class TabVHCreator(private val itemInteract: TabItemInteract?) : ViewHolderCreat
     }
 }
 
-internal class ViewPagerFragmentStateAdapter : FragmentStateAdapter {
+class ViewPagerFragmentStateAdapter : FragmentStateAdapter {
 
     val colors: MutableList<Int>
 

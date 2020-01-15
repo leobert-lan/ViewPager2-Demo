@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.viewpager2demo.R
 import com.example.viewpager2demo.base.adapter.vh2.RvAdapter2
 import kotlinx.android.synthetic.main.activity_nested_test.*
@@ -77,5 +79,13 @@ class RvFragment : Fragment() {
         dataset.add(FooVO2.Impl())
         dataset.add(FooVO2.Impl())
         dataset.endTransaction()
+
+        rv.addOnScrollListener(object : OnReachBottomListener() {
+            override fun onReachBottom(recyclerView: RecyclerView?) {
+                Toast.makeText(rv.context, "bottom", Toast.LENGTH_SHORT).show()
+            }
+        }.apply {
+            this.layoutManagerType = OnReachBottomListener.LayoutManagerType.LinearLayout
+        })
     }
 }

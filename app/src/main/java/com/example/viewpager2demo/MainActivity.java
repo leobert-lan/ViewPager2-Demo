@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NestedTestActivity.Companion.start(view.getContext());
+                NestedTestActivity2.Companion.start(view.getContext());
+//                NestedTestActivity.Companion.start(view.getContext());
             }
         });
     }

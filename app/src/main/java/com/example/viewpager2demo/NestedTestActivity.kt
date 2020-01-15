@@ -36,6 +36,7 @@ class NestedTestActivity : AppCompatActivity() {
         rv.adapter = adapter
 
         rv.isNestedScrollingEnabled = false
+//        rv.suppressLayout(true)
 
 
         dataset.registerDVRelation(FooVO2.Impl::class.java, FooVHCreator(null))

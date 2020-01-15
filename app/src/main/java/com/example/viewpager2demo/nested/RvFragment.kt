@@ -78,6 +78,15 @@ class RvFragment : Fragment() {
         dataset.add(FooVO2.Impl())
         dataset.add(FooVO2.Impl())
         dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
         dataset.endTransaction()
 
         rv.addOnScrollListener(object : OnReachBottomListener() {

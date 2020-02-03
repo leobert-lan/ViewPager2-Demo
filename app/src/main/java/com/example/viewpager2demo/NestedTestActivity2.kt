@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.viewpager2demo.base.adapter.vh2.RvAdapter2
 import com.example.viewpager2demo.nested.*
@@ -46,7 +47,13 @@ class NestedTestActivity2 : AppCompatActivity() {
         rv.adapter = adapter
 
         rv.isNestedScrollingEnabled = false
-//        rv.suppressLayout(true)
+
+        rv.addOnScrollListener(object :RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                Log.d("rvrv", "onScrolled")
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
 
 
         dataset.registerDVRelation(FooVO2.Impl::class.java, FooVHCreator(null))
@@ -58,7 +65,13 @@ class NestedTestActivity2 : AppCompatActivity() {
         dataset.add(FooVO2.Impl())
         dataset.add(FooVO2.Impl())
         dataset.add(BarVO2.Impl())
-//        dataset.add(TabVO2.Impl())
+
+        //增加长度看是否有滚动
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(FooVO2.Impl())
+        dataset.add(BarVO2.Impl())
         dataset.endTransaction()
 
         tmp()

@@ -35,7 +35,7 @@ import java.lang.annotation.RetentionPolicy;
  * by behaviors. There is a dummy view inside the sheet that is capable of getting nested scrolling
  * callbacks, and forward them to the *outer* behavior that they normally would never reach.
  */
-public class NestedScrollCoordinatorLayout extends CoordinatorLayout implements NestedScrollingChild {
+public class NestedScrollCoordinatorLayout extends LogCoordinatorLayout /*CoordinatorLayout*/ implements NestedScrollingChild {
     private static final String TAG = NestedScrollCoordinatorLayout.class.getSimpleName();
 
     /**

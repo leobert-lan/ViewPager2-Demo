@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.viewpager2demo.ui.LogCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NestedTestActivity2">
 
+<!--    头部-->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,9 +31,11 @@
     <com.example.viewpager2demo.ui.NestedScrollCoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:tag="aaaa"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
+<!--        第一段rv-->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbarlayout"
             android:layout_width="match_parent"
@@ -40,19 +43,13 @@
             android:gravity="center_horizontal"
             app:elevation="0dp">
 
-            <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:layout_scrollFlags="scroll|enterAlways">-->
-            <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:layout_scrollFlags="scroll">
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.example.viewpager2demo.ui.LogRecyclerView
                     android:id="@+id/rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,6 +60,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+<!--        tab 和rv-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -84,4 +82,4 @@
 
     </com.example.viewpager2demo.ui.NestedScrollCoordinatorLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.example.viewpager2demo.ui.LogCoordinatorLayout>

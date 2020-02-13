@@ -98,7 +98,7 @@ class NestedTestActivity2 : AppCompatActivity() {
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 Log.e("lmsg", "switch page:" + tab.position)
-                viewpager2.setCurrentItem(tab.position)
+                viewpager2.currentItem = tab.position
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -107,6 +107,9 @@ class NestedTestActivity2 : AppCompatActivity() {
 
             override fun onTabReselected(tab: TabLayout.Tab) {
                 Log.e("lmsg", "onTabReselected:" + tab.position)
+                if (viewpager2.currentItem != tab.position) {
+                    viewpager2.currentItem = tab.position
+                }
             }
         })
         viewpager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

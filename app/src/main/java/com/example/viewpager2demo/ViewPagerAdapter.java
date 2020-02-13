@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * leobert
- *
  */
 public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder> {
     private List<Integer> colors = new ArrayList<>();

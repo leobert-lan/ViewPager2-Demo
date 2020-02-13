@@ -111,6 +111,9 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 Log.e("lmsg", "onTabReselected:" + tab.getPosition());
+                if (mViewPager2.getCurrentItem() != tab.getPosition()) {
+                    mViewPager2.setCurrentItem(tab.getPosition());
+                }
             }
         });
         mViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

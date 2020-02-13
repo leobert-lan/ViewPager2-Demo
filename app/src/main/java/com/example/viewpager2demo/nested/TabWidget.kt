@@ -66,7 +66,7 @@ class TabVHCreator(private val itemInteract: TabItemInteract?) : ViewHolderCreat
                     binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                         override fun onTabSelected(tab: TabLayout.Tab) {
                             Log.e("lmsg", "switch page:" + tab.position)
-                            binding.viewpager2.setCurrentItem(tab.position)
+                            binding.viewpager2.currentItem = tab.position
                         }
 
                         override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -75,6 +75,9 @@ class TabVHCreator(private val itemInteract: TabItemInteract?) : ViewHolderCreat
 
                         override fun onTabReselected(tab: TabLayout.Tab) {
                             Log.e("lmsg", "onTabReselected:" + tab.position)
+                            if (binding.viewpager2.currentItem != tab.position) {
+                                binding.viewpager2.currentItem = tab.position
+                            }
                         }
                     })
                     binding.viewpager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

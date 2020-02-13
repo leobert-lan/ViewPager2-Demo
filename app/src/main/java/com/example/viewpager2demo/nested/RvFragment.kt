@@ -91,6 +91,8 @@ class RvFragment : Fragment() {
 
         rv.addOnScrollListener(object : OnReachBottomListener() {
             override fun onReachBottom(recyclerView: RecyclerView?) {
+                //这里只是简单测试下recyclerview是全展开还是可滑动的，
+                // 以及是否可以利用滑动监听来实现上拉加载，本身逻辑并不严谨
                 Toast.makeText(rv.context, "bottom", Toast.LENGTH_SHORT).show()
             }
         }.apply {

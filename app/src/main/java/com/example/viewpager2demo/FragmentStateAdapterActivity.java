@@ -22,6 +22,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.viewpager2demo.nested.RvFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,10 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
     private static final String key_index = "key_index";
 
     {
+        colors.add(android.R.color.black);
+        colors.add(android.R.color.holo_purple);
+        colors.add(android.R.color.holo_blue_dark);
+        colors.add(android.R.color.holo_green_light);
         colors.add(android.R.color.black);
         colors.add(android.R.color.holo_purple);
         colors.add(android.R.color.holo_blue_dark);
@@ -61,7 +67,7 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
             case R.id.action_add:
                 if (TextUtils.equals(item.getTitle(), getString(R.string.action_add))) {
                     colors.add(android.R.color.holo_red_light);
-                    mTabLayout.addTab(mTabLayout.newTab().setText("Tab4"));
+                    mTabLayout.addTab(mTabLayout.newTab().setText("Tab-ADD"));
                     mAdapter.notifyItemInserted(colors.size() - 1);
                     item.setIcon(R.drawable.ic_action_remove);
                     item.setTitle(R.string.action_remove);
@@ -87,15 +93,18 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
         mViewPager2 = findViewById(R.id.viewpager2);
 
 //        if (mViewPager2)
-//        mViewPager2.setOffscreenPageLimit(0);
+        mViewPager2.setOffscreenPageLimit(1);
 
         mAdapter = new ViewPagerFragmentStateAdapter(getSupportFragmentManager(), getLifecycle());
         mViewPager2.setAdapter(mAdapter);
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab-rv"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab0"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab1"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab3"));
+
+        for (int i = 0; i < colors.size(); i++) {
+            mTabLayout.addTab(mTabLayout.newTab().setText("Tab" + i));
+        }
+//        mTabLayout.addTab(mTabLayout.newTab().setText("Tab1"));
+//        mTabLayout.addTab(mTabLayout.newTab().setText("Tab2"));
+//        mTabLayout.addTab(mTabLayout.newTab().setText("Tab3"));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -131,7 +140,7 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         int index = savedInstanceState.getInt(key_index);
         mTabLayout.setScrollPosition(index, 0, true);
@@ -139,7 +148,7 @@ public class FragmentStateAdapterActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+    public void onSaveInstanceState(Bundle outState, @NotNull PersistableBundle outPersistentState) {
         outState.putInt(key_index, mTabLayout.getSelectedTabPosition());
         super.onSaveInstanceState(outState, outPersistentState);
     }

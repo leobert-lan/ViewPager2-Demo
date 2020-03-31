@@ -20,11 +20,11 @@ import java.util.List;
 
 /**
  * leobert
- *
  */
 public class PageFragment extends Fragment {
     private static final String COLORS = "colors";
     private static final String POSITION = "position";
+
     public static PageFragment newInstance(List<Integer> colors, int position) {
         Bundle args = new Bundle();
         args.putSerializable(COLORS, ((ArrayList<Integer>) colors));
@@ -33,8 +33,10 @@ public class PageFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     private List<Integer> mColors;
     private int mPosition;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,18 +50,24 @@ public class PageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("lmsg","onResume:"+getClass().getSimpleName()+" "+mPosition);
+        Log.e("lmsg", "onResume:" + getClass().getSimpleName() + " " + mPosition);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.e("lmsg","onPause:"+getClass().getSimpleName()+" "+mPosition);
+        Log.e("lmsg", "onPause:" + getClass().getSimpleName() + " " + mPosition);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getLifecycle().addObserver(new LifecycleEventObserver() {
+            @Override
+            public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
+                Log.e("lmsg", "L onStateChanged: PageFragment " + mPosition + " " + event);
+            }
+        });
         return inflater.inflate(R.layout.item_page, container, false);
     }
 
@@ -74,7 +82,7 @@ public class PageFragment extends Fragment {
         getViewLifecycleOwner().getLifecycle().addObserver(new LifecycleEventObserver() {
             @Override
             public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
-                Log.d("lmsg","onStateChanged: PageFragment "+mPosition+" "+event);
+                Log.d("lmsg", "onStateChanged: PageFragment " + mPosition + " " + event);
             }
         });
     }

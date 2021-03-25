@@ -1,9 +1,14 @@
 package com.example.viewpager2demo;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,9 +43,30 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NestedTestActivity2.Companion.start(view.getContext());
-//                NestedTestActivity.Companion.start(view.getContext());
+                getFg().show(getSupportFragmentManager(),"fg");
+                getFg().show(getSupportFragmentManager(),"fg");
+//                NestedTestActivity2.Companion.start(view.getContext());
             }
         });
+    }
+
+    private Fg getFg() {
+        if (fg == null)
+            fg = new Fg();
+        return fg;
+    }
+    private Fg fg;
+
+    class Fg extends DialogFragmentFixed {
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            try {
+                getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return inflater.inflate(R.layout.tmp, container);
+        }
     }
 }
